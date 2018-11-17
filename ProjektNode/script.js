@@ -2,26 +2,24 @@
 
  * http://www.sqlitetutorial.net/sqlite-nodejs/
 */
-
 const sqlite3 = require('sqlite3').verbose();
 
-/* starten der SQLite.Datenbank */
+/* starten der SQLite.Datenbank verbindung */
 let db = new sqlite3.Database(':memory:', (err) => {
     if (err) {
-        return console.log(err.message);
-    } else {
-        console.log('Verbunden mit der SQLite.Database');
+        return console.error(err.message);
     }
+    console.log('Connected to the in-memory SQlite database.');
 });
 
-/* beenden der SQLite.Datenbank */
+/* beenden der SQLite.Datenbank verbindung */
 db.close((err) => {
-   if (err) {
-       console.log(err.message);
-   } else {
-       console.log('Verbindung zur SQLite.Datenbank beendet');
-   }
+    if (err) {
+        return console.error(err.message);
+    }
+    console.log('Close the database connection.');
 });
+
 
 
 
